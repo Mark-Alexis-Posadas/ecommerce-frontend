@@ -1,4 +1,4 @@
-const ProductCard = ({ product }) => {
+const ProductCard: React.FC = ({ product }) => {
   return (
     <div className="group relative rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 shadow-xl hover:shadow-indigo-500/40 transition-all duration-300 hover:-translate-y-3">
       {/* FEATURED BADGE */}

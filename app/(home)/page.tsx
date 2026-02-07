@@ -6,7 +6,7 @@ import ValueProps from "./_components/ValueProps";
 import PromoBanner from "./_components/PromoBanner";
 import Footer from "@/components/layout/Footer";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
       <Navbar />

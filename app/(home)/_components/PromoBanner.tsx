@@ -1,4 +1,4 @@
-const PromoBanner = () => {
+const PromoBanner: React.FC = () => {
   return (
     <section className="px-10 py-16 text-center">
       <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 p-14">

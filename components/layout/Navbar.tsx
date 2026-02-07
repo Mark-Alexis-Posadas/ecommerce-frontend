@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10 mb-5">
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">

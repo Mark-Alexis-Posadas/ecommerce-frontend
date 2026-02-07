@@ -1,6 +1,6 @@
 import React from "react";
 
-const ValueProps = () => {
+const ValueProps: React.FC = () => {
   return (
     <section className="px-10 py-20 bg-white/5">
       <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-10 text-center">

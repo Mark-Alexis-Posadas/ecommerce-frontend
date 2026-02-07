@@ -1,6 +1,6 @@
 import React from "react";
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   return (
     <section className="px-10 py-20 text-center">
       <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">

@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoriesSection = () => {
+const CategoriesSection: React.FC = () => {
   return (
     <section className="px-10 py-16">
       <h2 className="text-3xl font-bold mb-10 text-center">Shop by Category</h2>
