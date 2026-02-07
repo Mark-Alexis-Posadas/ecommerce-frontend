@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
       </h2>
 
       {/* EXISTING PRODUCT GRID */}
-      <Product />
+      {/* <Product /> */}
     </section>
   );
 };
