@@ -1,16 +1,19 @@
-import React from "react";
+"use client";
 
-const FeaturedProducts: React.FC = () => {
+import { Box, Heading, Text } from "@chakra-ui/react";
+
+export default function FeaturedProducts() {
   return (
-    <section className="px-10 py-16">
-      <h2 className="text-3xl font-bold mb-8 text-center">
-        🔥 Featured Products
-      </h2>
+    <Box py={20} px={6} bg="gray.50">
+      <Heading textAlign="center" mb={4}>
+        Featured Products
+      </Heading>
 
-      {/* EXISTING PRODUCT GRID */}
-      {/* <Product /> */}
-    </section>
+      <Text textAlign="center" color="gray.500" mb={10}>
+        Handpicked favorites our customers love
+      </Text>
+
+      {/* Replace this with your product grid */}
+    </Box>
   );
-};
-
-export default FeaturedProducts;
+}

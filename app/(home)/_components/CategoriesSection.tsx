@@ -1,22 +1,39 @@
-import React from "react";
+"use client";
 
-const CategoriesSection: React.FC = () => {
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+
+const categories = ["Electronics", "Fashion", "Home Essentials", "Furniture"];
+
+export default function CategoriesSection() {
   return (
-    <section className="px-10 py-16">
-      <h2 className="text-3xl font-bold mb-10 text-center">Shop by Category</h2>
+    <Box py={20} px={6}>
+      <Heading textAlign="center" mb={12}>
+        Shop by Category
+      </Heading>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {["Electronics", "Fashion", "Home", "Furniture"].map((cat) => (
-          <div
+      <SimpleGrid columns={{ base: 2, md: 4 }} gap={6}>
+        {categories.map((cat) => (
+          <Box
             key={cat}
-            className="h-32 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-xl flex items-center justify-center text-lg font-semibold hover:bg-indigo-500/20 transition cursor-pointer"
+            p={10}
+            borderRadius="xl"
+            bg="white"
+            border="1px solid"
+            borderColor="gray.200"
+            textAlign="center"
+            fontWeight="semibold"
+            cursor="pointer"
+            _hover={{
+              shadow: "md",
+              transform: "translateY(-4px)",
+              borderColor: "blue.400",
+            }}
+            transition="all 0.2s"
           >
-            {cat}
-          </div>
+            <Text>{cat}</Text>
+          </Box>
         ))}
-      </div>
-    </section>
+      </SimpleGrid>
+    </Box>
   );
-};
-
-export default CategoriesSection;
+}

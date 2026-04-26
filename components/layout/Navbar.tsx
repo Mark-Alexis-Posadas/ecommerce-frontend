@@ -1,65 +1,137 @@
-import React from "react";
+"use client";
+
+import {
+  Box,
+  Flex,
+  Text,
+  Input,
+  Button,
+  IconButton,
+  Badge,
+  InputGroup,
+} from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10 mb-5">
-      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+    <Box
+      position="sticky"
+      top="0"
+      zIndex="1000"
+      bg="white"
+      borderBottom="1px solid"
+      borderColor="gray.200"
+      boxShadow="sm"
+    >
+      <Flex
+        maxW="7xl"
+        mx="auto"
+        px={6}
+        py={4}
+        align="center"
+        justify="space-between"
+      >
         {/* LOGO */}
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-extrabold text-white">
+        <Flex align="center" gap={3}>
+          <Box
+            h="40px"
+            w="40px"
+            borderRadius="lg"
+            bg="blue.600"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            fontWeight="bold"
+            color="white"
+          >
             S
-          </div>
-          <span className="text-xl font-bold text-white tracking-wide">
+          </Box>
+          <Text fontSize="xl" fontWeight="bold" color="gray.800">
             ShopX
-          </span>
-        </div>
+          </Text>
+        </Flex>
 
         {/* SEARCH (DESKTOP) */}
-        <div className="hidden md:flex flex-1 mx-10">
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
+        <Box flex="1" mx={10} display={{ base: "none", md: "block" }}>
+          <InputGroup startElement={<SearchIcon color="gray.400" />}>
+            <Input
+              placeholder="Search products..."
+              bg="gray.100"
+              border="1px solid"
+              borderColor="gray.200"
+              _focus={{
+                bg: "white",
+                borderColor: "blue.500",
+              }}
+            />
+          </InputGroup>
+        </Box>
 
         {/* ACTIONS */}
-        <div className="flex items-center gap-6">
-          <button className="hidden md:block text-sm font-medium text-gray-300 hover:text-white transition">
+        <Flex align="center" gap={4}>
+          <Button
+            variant="ghost"
+            color="gray.700"
+            display={{ base: "none", md: "block" }}
+          >
             Products
-          </button>
-          <button className="hidden md:block text-sm font-medium text-gray-300 hover:text-white transition">
+          </Button>
+
+          <Button
+            variant="ghost"
+            color="gray.700"
+            display={{ base: "none", md: "block" }}
+          >
             Categories
-          </button>
+          </Button>
 
           {/* CART */}
-          <div className="relative">
-            <button className="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition">
-              🛒
-            </button>
+          <Box position="relative">
+            <IconButton aria-label="cart" variant="ghost">
+              <span>🛒</span>
+            </IconButton>
 
-            {/* CART BADGE */}
-            <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-indigo-600 text-xs font-bold text-white flex items-center justify-center">
+            <Badge
+              position="absolute"
+              top="-1"
+              right="-1"
+              borderRadius="full"
+              bg="blue.600"
+              color="white"
+              fontSize="xs"
+              px={2}
+            >
               2
-            </span>
-          </div>
+            </Badge>
+          </Box>
 
           {/* MOBILE MENU */}
-          <button className="md:hidden p-2 rounded-xl bg-white/10 hover:bg-white/20 transition">
-            ☰
-          </button>
-        </div>
-      </div>
+          <IconButton
+            aria-label="menu"
+            display={{ md: "none" }}
+            variant="ghost"
+          >
+            <span>☰</span>
+          </IconButton>
+        </Flex>
+      </Flex>
 
       {/* MOBILE SEARCH */}
-      <div className="md:hidden px-6 pb-4">
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
-      </div>
-    </nav>
+      <Box px={6} pb={4} display={{ md: "none" }}>
+        <InputGroup startElement={<SearchIcon color="gray.400" />}>
+          <Input
+            placeholder="Search products..."
+            bg="gray.100"
+            border="1px solid"
+            borderColor="gray.200"
+            _focus={{
+              bg: "white",
+              borderColor: "blue.500",
+            }}
+          />
+        </InputGroup>
+      </Box>
+    </Box>
   );
 };
 

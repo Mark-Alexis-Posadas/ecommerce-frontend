@@ -1,35 +1,39 @@
-import React from "react";
+"use client";
 
-const ValueProps: React.FC = () => {
+import { Box, SimpleGrid, Heading, Text, VStack } from "@chakra-ui/react";
+
+const items = [
+  {
+    title: "Fast Delivery",
+    desc: "Reliable shipping across the Philippines.",
+  },
+  {
+    title: "Secure Payments",
+    desc: "Your transactions are always protected.",
+  },
+  {
+    title: "Quality Products",
+    desc: "Only the best items make it to our store.",
+  },
+  {
+    title: "Customer Support",
+    desc: "We’re here whenever you need help.",
+  },
+];
+
+export default function ValueProps() {
   return (
-    <section className="px-10 py-20 bg-white/5">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-10 text-center">
-        <div>
-          <h3 className="text-xl font-bold mb-2">🚚 Fast Delivery</h3>
-          <p className="text-sm text-gray-400">
-            Quick and reliable shipping nationwide.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-bold mb-2">🔒 Secure Payment</h3>
-          <p className="text-sm text-gray-400">100% secure checkout process.</p>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-bold mb-2">⭐ Top Quality</h3>
-          <p className="text-sm text-gray-400">Hand-picked premium products.</p>
-        </div>
-
-        <div>
-          <h3 className="text-xl font-bold mb-2">💬 Support</h3>
-          <p className="text-sm text-gray-400">
-            Friendly customer service anytime.
-          </p>
-        </div>
-      </div>
-    </section>
+    <Box py={20} px={6} bg="gray.100">
+      <SimpleGrid columns={{ base: 1, md: 4 }} gap={10}>
+        {items.map((item) => (
+          <VStack key={item.title} textAlign="center">
+            <Heading size="md">{item.title}</Heading>
+            <Text color="gray.600" fontSize="sm">
+              {item.desc}
+            </Text>
+          </VStack>
+        ))}
+      </SimpleGrid>
+    </Box>
   );
-};
-
-export default ValueProps;
+}

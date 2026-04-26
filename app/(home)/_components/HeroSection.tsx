@@ -1,27 +1,30 @@
-import React from "react";
+"use client";
 
-const HeroSection: React.FC = () => {
+import { Box, Heading, Text, Button, Stack } from "@chakra-ui/react";
+
+export default function HeroSection() {
   return (
-    <section className="px-10 py-20 text-center">
-      <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-        Shop Smarter. <span className="text-indigo-500">Live Better.</span>
-      </h1>
+    <Box py={24} px={6} textAlign="center" bg="gray.50">
+      <Heading size="2xl" fontWeight="extrabold" lineHeight="1.2" mb={6}>
+        Discover Better Living{" "}
+        <Box as="span" color="blue.600">
+          Through Smart Shopping
+        </Box>
+      </Heading>
 
-      <p className="max-w-2xl mx-auto text-gray-300 text-lg mb-10">
-        Discover premium products crafted to elevate your everyday life. Curated
-        quality. Honest pricing.
-      </p>
+      <Text maxW="600px" mx="auto" color="gray.600" fontSize="lg" mb={10}>
+        Carefully selected products that bring quality, comfort, and value to
+        your everyday life.
+      </Text>
 
-      <div className="flex justify-center gap-4">
-        <button className="px-8 py-4 rounded-xl bg-indigo-600 font-bold tracking-wide hover:bg-indigo-500 transition">
+      <Stack direction="row" justify="center" gap={4}>
+        <Button colorScheme="blue" size="lg">
           Shop Now
-        </button>
-        <button className="px-8 py-4 rounded-xl border border-white/20 text-gray-200 hover:bg-white/10 transition">
-          Browse Categories
-        </button>
-      </div>
-    </section>
+        </Button>
+        <Button variant="outline" size="lg">
+          Explore Categories
+        </Button>
+      </Stack>
+    </Box>
   );
-};
-
-export default HeroSection;
+}
