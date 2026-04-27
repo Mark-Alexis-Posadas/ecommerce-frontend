@@ -1,21 +1,11 @@
 import React from "react";
 import { Box, Text, Badge, Button, Flex, Image } from "@chakra-ui/react";
+import { useCartStore } from "@/store/useCartStore";
+import { Product } from "@/types/product";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  category: string;
-  rating: number;
-  stock: number;
-  isFeatured?: boolean;
-};
+const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+  const addToCart = useCartStore((state) => state.addToCart);
 
-type Props = {
-  product: Product;
-};
-
-const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <Box
       borderRadius="xl"
@@ -33,30 +23,24 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       {/* IMAGE */}
       <Box h="180px" bg="gray.100" position="relative">
         {product.isFeatured && (
-          <Badge
-            position="absolute"
-            top={3}
-            left={3}
-            colorScheme="purple"
-            borderRadius="full"
-            px={2}
-            fontSize="xs"
-          >
+          <Badge position="absolute" top={3} left={3} colorScheme="purple">
             Featured
           </Badge>
         )}
 
-        <Flex h="full" align="center" justify="center">
-          <Text color="gray.400" fontSize="sm">
-            Product Image
-          </Text>
-        </Flex>
+        <Image
+          src={product.image}
+          alt={product.title}
+          objectFit="cover"
+          w="100%"
+          h="100%"
+        />
       </Box>
 
       {/* CONTENT */}
       <Box p={4}>
-        <Text fontSize="md" fontWeight="semibold" noOfLines={1}>
-          {product.name}
+        <Text fontSize="md" fontWeight="semibold" lineClamp={1}>
+          {product.title}
         </Text>
 
         <Text fontSize="sm" color="gray.500" textTransform="capitalize">
@@ -67,33 +51,27 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         <Flex mt={2} align="center" gap={1}>
           <Text color="yellow.400">★</Text>
           <Text fontSize="sm" color="gray.600">
-            {product.rating}
+            {product.rating.rate} ({product.rating.count})
           </Text>
         </Flex>
 
         {/* PRICE + STOCK */}
         <Flex mt={3} justify="space-between" align="center">
-          <Text fontSize="lg" fontWeight="bold" color="gray.800">
+          <Text fontSize="lg" fontWeight="bold">
             ₱{product.price.toLocaleString()}
           </Text>
 
-          <Badge
-            colorScheme={product.stock > 0 ? "green" : "red"}
-            variant="subtle"
-            borderRadius="full"
-            px={2}
-            fontSize="xs"
-          >
+          <Badge colorScheme={product.stock > 0 ? "green" : "red"}>
             {product.stock > 0 ? "In stock" : "Out of stock"}
           </Badge>
         </Flex>
 
-        {/* CTA */}
         <Button
           mt={4}
           w="full"
           colorScheme="blackAlpha"
-          isDisabled={product.stock === 0}
+          disabled={product.stock === 0}
+          onClick={() => addToCart(product)}
         >
           Add to Cart
         </Button>
