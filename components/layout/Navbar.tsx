@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import {
   Box,
   Flex,
@@ -32,25 +32,26 @@ const Navbar: React.FC = () => {
         justify="space-between"
       >
         {/* LOGO */}
-        <Flex align="center" gap={3}>
-          <Box
-            h="40px"
-            w="40px"
-            borderRadius="lg"
-            bg="blue.600"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            fontWeight="bold"
-            color="white"
-          >
-            S
-          </Box>
-          <Text fontSize="xl" fontWeight="bold" color="gray.800">
-            ShopX
-          </Text>
-        </Flex>
-
+        <Link href="/">
+          <Flex align="center" gap={3}>
+            <Box
+              h="40px"
+              w="40px"
+              borderRadius="lg"
+              bg="blue.600"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              fontWeight="bold"
+              color="white"
+            >
+              S
+            </Box>
+            <Text fontSize="xl" fontWeight="bold" color="gray.800">
+              ShopX
+            </Text>
+          </Flex>
+        </Link>
         {/* SEARCH (DESKTOP) */}
         <Box flex="1" mx={10} display={{ base: "none", md: "block" }}>
           <InputGroup startElement={<SearchIcon color="gray.400" />}>
@@ -69,22 +70,24 @@ const Navbar: React.FC = () => {
 
         {/* ACTIONS */}
         <Flex align="center" gap={4}>
-          <Button
-            variant="ghost"
-            color="gray.700"
-            display={{ base: "none", md: "block" }}
-          >
-            Products
-          </Button>
-
-          <Button
-            variant="ghost"
-            color="gray.700"
-            display={{ base: "none", md: "block" }}
-          >
-            Categories
-          </Button>
-
+          <Link href="/products">
+            <Button
+              variant="ghost"
+              color="gray.700"
+              display={{ base: "none", md: "block" }}
+            >
+              Products
+            </Button>
+          </Link>
+          <Link href="/categories">
+            <Button
+              variant="ghost"
+              color="gray.700"
+              display={{ base: "none", md: "block" }}
+            >
+              Categories
+            </Button>
+          </Link>
           {/* CART */}
           <Box position="relative">
             <IconButton aria-label="cart" variant="ghost">
