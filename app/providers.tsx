@@ -6,13 +6,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  // important: wag recreate bawat render
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
-
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

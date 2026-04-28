@@ -1,18 +1,16 @@
 import { Container, Box } from "@chakra-ui/react";
-
 import ProductList from "@/features/products/components/ProductDetails";
+import { api } from "@/lib/axios";
 
 export default async function ProductsPage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-    cache: "no-store",
-  });
+  const res = await api.get("/api/products");
 
-  const json = await res.json();
+  const data = res.data;
 
   return (
     <Box as="section" py={10}>
       <Container maxW="7xl">
-        <ProductList initialData={json.data} />
+        <ProductList initialData={data.data} />
       </Container>
     </Box>
   );

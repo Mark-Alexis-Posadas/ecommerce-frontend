@@ -1,11 +1,9 @@
 import React from "react";
 import { Box, Text, Badge, Button, Flex, Image } from "@chakra-ui/react";
-import { useCartStore } from "@/store/useCartStore";
 import { Product } from "@/types/product";
-
+import { useAddToCart } from "@/features/cart/hooks/useAddToCart";
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
-  const addToCart = useCartStore((state) => state.addToCart);
-
+  const { mutate, isPending } = useAddToCart();
   return (
     <Box
       borderRadius="xl"
@@ -71,7 +69,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           w="full"
           colorScheme="blackAlpha"
           disabled={product.stock === 0}
-          onClick={() => addToCart(product)}
+          loading={isPending}
+          onClick={() =>
+            mutate({
+              productId: product._id,
+              quantity: 1,
+              product,
+            })
+          }
         >
           Add to Cart
         </Button>
