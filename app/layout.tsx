@@ -25,18 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Providers>
-          {/* NAVBAR (global) */}
           <Navbar />
-
-          {/* PAGE CONTENT */}
           <main style={{ minHeight: "100vh" }}>{children}</main>
-
-          {/* FOOTER (global) */}
           <Footer />
         </Providers>
       </body>
